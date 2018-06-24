@@ -1,6 +1,6 @@
 var characters= [
     {
-        name: 'Captain',
+        name: 'captain',
         health: 180,
         attack: 20,
         fullImageUrl: "assets/images/captain.png",
@@ -8,7 +8,7 @@ var characters= [
         enemyAttackBack: 25
     },
     {
-        name: 'Helmswoman',
+        name: 'helmswoman',
         health: 120,
         attack: 8,
         fullImageUrl: "assets/images/helmswoman.png",
@@ -17,7 +17,7 @@ var characters= [
     },
 
     {
-        name: 'Quartermaster',
+        name: 'quartermaster',
         health: 140,
         attack: 14,
         fullImageUrl: "assets/images/quartermaster-right.png",
@@ -26,7 +26,7 @@ var characters= [
     },
 
     {
-        name: 'First mate',
+        name: 'firstmate',
         health: 160,
         attack: 20,
         fullImageUrl: "assets/images/firstmate.png",
@@ -35,7 +35,7 @@ var characters= [
     },
 
     {
-        name: 'Cook',
+        name: 'cook',
         health: 100,
         attack: 8,
         fullImageUrl: "assets/images/cook.png",
@@ -44,9 +44,4 @@ var characters= [
     },
 ]
 
-// $(document).ready(function(){
-    
-
-
-// });
 
