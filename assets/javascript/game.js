@@ -45,7 +45,7 @@ var characters= [
 ]
 
 
-var character;
+var character, user;
 
 $(document).ready(function(){
    
@@ -56,6 +56,13 @@ $(document).ready(function(){
         $(this).hide();
         $('#choose').text('Enemies Available To Attack');
 
+        if( $('#userPlayer').is(':empty') ) {
+            user = $('<img>');
+            user.attr('id' , 'playerImage');
+            user.attr('src', "assets/images/"+character+".png");
+            $('#userPlayer').append(user);
+
+        }
 
     }); 
 
