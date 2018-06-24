@@ -45,3 +45,21 @@ var characters= [
 ]
 
 
+
+
+$(document).ready(function(){
+   
+    // on click of the .imageButton button element the button with its character is hidden on page
+    // text changes in h2 from 'Choose Your Character' to 'Enemies Available to Attack'
+    $('.imageButton').on('click', function(){
+        $(this).hide();
+        $('h2').text('Enemies Available To Attack');
+        
+    }); 
+    
+
+
+
+
+});
+
