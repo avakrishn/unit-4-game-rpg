@@ -45,17 +45,21 @@ var characters= [
 ]
 
 
-
+var character;
 
 $(document).ready(function(){
    
     // on click of the .imageButton button element the button with its character is hidden on page
     // text changes in h2 from 'Choose Your Character' to 'Enemies Available to Attack'
     $('.imageButton').on('click', function(){
+        character = $(this).attr('id');
         $(this).hide();
-        $('h2').text('Enemies Available To Attack');
-        
+        $('#choose').text('Enemies Available To Attack');
+
+
     }); 
+
+    
     
 
 
