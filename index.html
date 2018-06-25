@@ -21,62 +21,67 @@
         <h1>Mutiny on the High Seas!</h1>
     </div>
 
-    <table class="characters">
+    <div class="characters">
         <h2 id="choose">Choose Your Character:</h2>
-        <tr class="table-row">
-            <td>            
-                <button id ="captain" class="imageButton">
-                    <img class="face" src="assets/images/captain-headshot.png" alt="The Captain">
-                    <h3 class="description">The Captain</h3>
-                </button>
-            </td>
-            <td>
-                <button id="helmswoman" class="imageButton">
-                    <img  class="face" src="assets/images/helmswoman-headshot.png" alt="The Helmswoman">
-                    <h3 class="description">The Helmswoman</h3>
-                </button>
-            </td>
-            <td>
-                <button id="quartermaster" class="imageButton">
-                    <img class="face" src="assets/images/quartermaster-headshot.png" alt="The Quartermaster">
-                    <h3 class="description">The Quartermaster</h3>
-                </button>
-            </td>
-            <td>
-                <button id="firstmate" class="imageButton">
-                    <img class="face" src="assets/images/firstmate-headshot.png" alt="The First Mate">
-                    <h3 class="description">The First Mate</h3>
-                </button>
-            </td>
-            <td>
-                <button id="cook" class="imageButton">
-                    <img class="face" src="assets/images/cook-headshot.png" alt="The Cook">
-                    <h3 class="description">The Cook</h3>
-                </button>
-            </td>
-
-        </tr>
-    </table>
+        <table>   
+            <tr class="table-row">
+                <td>            
+                    <button id ="captain" class="imageButton">
+                        <img class="face" src="assets/images/captain-headshot.png" alt="The Captain">
+                        <h3 class="description">The Captain</h3>
+                    </button>
+                </td>
+                <td>
+                    <button id="helmswoman" class="imageButton">
+                        <img  class="face" src="assets/images/helmswoman-headshot.png" alt="The Helmswoman">
+                        <h3 class="description">The Helmswoman</h3>
+                    </button>
+                </td>
+                <td>
+                    <button id="quartermaster" class="imageButton">
+                        <img class="face" src="assets/images/quartermaster-headshot.png" alt="The Quartermaster">
+                        <h3 class="description">The Quartermaster</h3>
+                    </button>
+                </td>
+                <td>
+                    <button id="firstmate" class="imageButton">
+                        <img class="face" src="assets/images/firstmate-headshot.png" alt="The First Mate">
+                        <h3 class="description">The First Mate</h3>
+                    </button>
+                </td>
+                <td>
+                    <button id="cook" class="imageButton">
+                        <img class="face" src="assets/images/cook-headshot.png" alt="The Cook">
+                        <h3 class="description">The Cook</h3>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <div class="user">
-        <div id= "userPlayer"></div>
 
-        <div class="userHP"></div>
+        <div id ="userName"></div>
+        
+        <div id="userPlayer"></div>
+
+        <div id="userHP"></div>
 
     </div>
 
-    <div class="clear"></div>
 
     <div class="opponent">
+
+        <div id ="opponentName"></div>
+
         <div id= "opponentPlayer"></div>
             
-        <div class="opponentHP"></div>
+        <div id="opponentHP"></div>
     </div>
 
-    <div class="clear"></div>
 
     <div class ="attack">
-        <button>Attack!</button>
+        <button id ="attackButton">Attack!</button>
     </div>
 
     <div class ="resultOfAction">
