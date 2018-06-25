@@ -79,7 +79,6 @@ function readyToAttack (){
 }
 
 
-
 $(document).ready(function(){
 
    
@@ -126,7 +125,8 @@ $(document).ready(function(){
         $(this).hide();
         $('#choose').text('Enemies Available To Attack');
 
-
+        // The setTimeout() method calls the readyToAttack function after 2000 milliseconds or 2 seconds
+        setTimeout(readyToAttack, 1000);
     }); 
 
 
