@@ -1,70 +1,108 @@
+//To do: fade in images
+
+// Array of objects called characters that holds all characters
 var characters= [
     {
-        name: 'captain',
+        name: 'The Captain',
         health: 180,
         attack: 20,
         fullImageUrl: "assets/images/captain.png",
         faceImgUrl: "assets/images/captain-headshot.png",
-        enemyAttackBack: 25
+        opponentAttackBack: 25
     },
     {
-        name: 'helmswoman',
+        name: 'The Helmswoman',
         health: 120,
         attack: 8,
         fullImageUrl: "assets/images/helmswoman.png",
-        aceImgUrl: "assets/images/helmswoman-headshot.png",
-        enemyAttackBack: 10
+        faceImgUrl: "assets/images/helmswoman-headshot.png",
+        opponentAttackBack: 10
     },
 
     {
-        name: 'quartermaster',
+        name: 'The Quartermaster',
         health: 140,
         attack: 14,
-        fullImageUrl: "assets/images/quartermaster-right.png",
-        aceImgUrl: "assets/images/quartermaster-headshot.png",
-        enemyAttackBack: 15
+        userFullImageUrl: "assets/images/quartermaster-left.png",
+        fullImageUrl: "assets/images/quartermaster.png",
+        faceImgUrl: "assets/images/quartermaster-headshot.png",
+        opponentAttackBack: 15
     },
 
     {
-        name: 'firstmate',
+        name: 'The First Mate',
         health: 160,
         attack: 20,
         fullImageUrl: "assets/images/firstmate.png",
         faceImgUrl: "assets/images/firstmate-headshot.png",
-        enemyAttackBack: 20
+        opponentAttackBack: 20
     },
 
     {
-        name: 'cook',
+        name: 'The Cook',
         health: 100,
         attack: 8,
         fullImageUrl: "assets/images/cook.png",
         faceImgUrl: "assets/images/cook-headshot.png",
-        enemyAttackBack: 5
+        opponentAttackBack: 5
     },
 ]
 
 
-var character, user;
+
+// global variables
+var userChar, opponentChar, user, opponent, userName, opponentName, userHealth, opponentHealth, userAttack, opponentAttackBack;
+
+
 
 $(document).ready(function(){
+
    
-    // on click of the .imageButton button element the button with its character is hidden on page
-    // text changes in h2 from 'Choose Your Character' to 'Enemies Available to Attack'
+    // On click of the .imageButton button element the button with its character is hidden on page
+    // Text changes in h2 (#choose) from 'Choose Your Character' to 'Enemies Available to Attack'
+    // Using on method with click event handler used in jQuery; an array of objects was used to get specific values using the specific keys
     $('.imageButton').on('click', function(){
-        character = $(this).attr('id');
+        // chooses user character 
+        if($('#userPlayer').is(':empty') ) {
+            userChar = $(this).attr('id');
+            userName = characters[userChar]["name"];
+            userHealth = characters[userChar]["health"];
+            userAttack = characters[userChar]["attack"];
+    
+            user = $('<img>');
+            user.attr('id' , 'userImage');
+
+            if (userName === 'The Quartermaster'){
+                user.attr('src', characters[userChar]["userFullImageUrl"]);
+            }
+            else{
+                user.attr('src', characters[userChar]["fullImageUrl"]);
+            }
+    
+            $('#userPlayer').append(user);
+            
+        }
+        // chooses opponent character
+        else if($('#opponentPlayer').is(':empty')){
+            opponentChar = $(this).attr('id');;
+            opponentName = characters[opponentChar]["name"];
+            opponentHealth = characters[opponentChar]["health"];
+            opponentAttackBack = characters[opponentChar]["opponentAttackBack"];
+
+            opponent = $('<img>');
+            opponent.attr('id' , 'opponentImage');
+            
+            opponent.attr('src', characters[opponentChar]["fullImageUrl"]);
+            
+            $('#opponentPlayer').append(opponent);
+        } 
+
         $(this).hide();
         $('#choose').text('Enemies Available To Attack');
 
-        if( $('#userPlayer').is(':empty') ) {
-            user = $('<img>');
-            user.attr('id' , 'playerImage');
-            user.attr('src', "assets/images/"+character+".png");
-            $('#userPlayer').append(user);
-
-        }
 
     }); 
+
 
     
     
