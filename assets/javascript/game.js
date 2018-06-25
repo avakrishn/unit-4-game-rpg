@@ -53,6 +53,31 @@ var characters= [
 // global variables
 var userChar, opponentChar, user, opponent, userName, opponentName, userHealth, opponentHealth, userAttack, opponentAttackBack;
 
+// After user character and opponent character are chosen then all other unchosen characters are hidden
+// function displays the users name and health as well as the opponents name and health 
+// attack button is shown on page
+// jQuery methods used: is with selector empty, html, height, and show
+function readyToAttack (){
+    if($('#userPlayer').is(':empty') == false && $('#opponentPlayer').is(':empty') == false){
+        $('.characters').hide();
+
+        $('#userName').html("Your Character:</br>" +  userName);
+        $('#userHealth').html(userHealth);
+
+        $('.user').height('91%');
+        user.height('83%');
+
+        $('#opponentName').html("Mutineer:</br>" + opponentName);
+        $('#opponentHealth').html(opponentHealth);
+
+        $('.opponent').height('91%');
+        opponent.height('83%');
+
+        $('.attack').show();
+    }
+    
+}
+
 
 
 $(document).ready(function(){
@@ -61,6 +86,7 @@ $(document).ready(function(){
     // On click of the .imageButton button element the button with its character is hidden on page
     // Text changes in h2 (#choose) from 'Choose Your Character' to 'Enemies Available to Attack'
     // Using on method with click event handler used in jQuery; an array of objects was used to get specific values using the specific keys
+    // other jQuery methods used: .attr(), .append(), .hide()
     $('.imageButton').on('click', function(){
         // chooses user character 
         if($('#userPlayer').is(':empty') ) {
