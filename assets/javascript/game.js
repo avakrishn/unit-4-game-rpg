@@ -1,4 +1,4 @@
-//To do: fade in images
+//To do: fade in images (faces and full images), smooth transition of image appearance, flashing/ color change of HP when low, health bar, single vs multi (keys), image slider, words typed on page
 
 // Array of objects called characters that holds all characters
 var characters= [
@@ -61,23 +61,43 @@ function readyToAttack (){
     if($('#userPlayer').is(':empty') == false && $('#opponentPlayer').is(':empty') == false){
         $('.characters').hide();
 
-        $('#userName').html("Your Character:</br>" +  userName);
-        $('#userHealth').html(userHealth);
+        $('#userName').html("Your Character:</br>" +  userName).show();
+        $('#userHealth').html(userHealth).show();
 
         $('.user').height('91%');
-        user.height('83%');
+        user.height('80%');
 
-        $('#opponentName').html("Mutineer:</br>" + opponentName);
-        $('#opponentHealth').html(opponentHealth);
+        $('#opponentName').html("Mutineer:</br>" + opponentName).show();
+        $('#opponentHealth').html(opponentHealth).show();
 
         $('.opponent').height('91%');
-        opponent.height('83%');
+        opponent.height('80%');
 
         $('.attack').show();
     }
     
 }
 
+// when executed the oponnent attacks the user back
+//jQuery methods used: prepend, html, show
+function opponentAttack(){
+    userHealth = userHealth - opponentAttackBack;
+    var attackBack = "<p>" + opponentName + " attacked " + userName +  " dealing back " + opponentAttackBack + " damage </p> </br>" 
+    $('#result').prepend(attackBack);
+    $('#userHealth').html(userHealth);
+    $('.attack').show();
+    
+}
+
+
+function reset(){
+    $('#userName').empty();
+    $('#userPlayer').empty();
+    $('#userHP').empty();
+    $('#opponentName').empty();
+    $('#opponentPlayer').empty();
+    $('#opponentHP').empty();
+}
 
 $(document).ready(function(){
 
@@ -129,12 +149,20 @@ $(document).ready(function(){
         setTimeout(readyToAttack, 1000);
     }); 
 
-
-    
-    
-
-
-
-
+    // user clicks on attack button to attack the opponent
+    // after user attacks the opponent the userAttack points increases by the userAttack value
+    //jQuery methods used hide, html, setTimeout
+    $('.attack').on('click', function(){
+        // debugger;
+        $('.attack').hide();
+        $('#result').html("");
+        user.css("transform", "translateX(25%)").delay(2000);
+        opponentHealth = opponentHealth - userAttack;
+        $('#result').html("<p>" + userName + " attacked " + opponentName +  " dealing " + userAttack + " damage </p>").show();
+        $('#opponentHealth').html(opponentHealth);
+        userAttack += userAttack;
+        user.css("transform", "translateX(-25%)").delay(2000); 
+        setTimeout(opponentAttack, 1000);
+    });
 });
 

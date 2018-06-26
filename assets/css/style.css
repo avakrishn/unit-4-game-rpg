@@ -158,25 +158,42 @@ button:focus {outline:0;}
 
 }
 
-#userName, #userHealth, #opponentName, #opponentHealth{
+#userName, #opponentName {
+    display: none;
     background-color: rgba(0, 0, 0, 0.7);
-    /* padding: 1vw 0 1vw 0; */
+    padding: 0.5vw 0 0.5vw 0;
     font-size: 1.5vw;
+    line-height: 2vw;
 }
-#userHealth{
+#userHealth, #opponentHealth{
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1.5vw;
+    display: none;
     position:fixed;
-    bottom:0.2vw;
-    left: 3vw;
+    bottom:0.5vw;
     width: 25%;
     padding: 0.5vw 0 0.5vw 0;
+}
+#userHealth{
+    left: 3vw;
 }
 
  #opponentHealth{
-    position:fixed;
-    bottom:0.2vw;
     right: 3vw;
-    width: 25%;
-    padding: 0.5vw 0 0.5vw 0;
+}
+
+#result{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1.5vw;
+    padding: 0.5vw;
+    width: 41vw;
+    position: fixed;
+    bottom: 0.5vw;
+    left: 29vw;
+    text-align: center;
+
+    
 }
 
 
