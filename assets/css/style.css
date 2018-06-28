@@ -56,7 +56,6 @@ h3{
     height: 10vw;
     background-color: transparent;
     border: none;
-    /* vertical-align: top; */
     margin: 2vw;
     border: rgb(192, 44, 17, 0.8) solid 0.4vw;
     /* border: rgb(214, 194, 149) solid 5px; */
@@ -98,6 +97,9 @@ button:focus {outline:0;}
     background-color: black;
     border: none;
     padding: 0.7vw;
+    position: fixed;
+    right: 48%;
+    z-index: 100;
 
 }
 
@@ -107,16 +109,8 @@ button:focus {outline:0;}
 
 
 #userImage{
-    /* float: left; */
-    /* height: 475px; */
-    /* height: 83%; */
-    /* height: 57%; */
     height: 60%;
     width: auto;
-
-    /* width: 30%; */
-
-    /* margin-left: 1vw; */
     position:fixed;
     bottom:1.8vw;
     left:0px;
@@ -135,14 +129,8 @@ button:focus {outline:0;}
 }
 
 #opponentImage{
-    /* float: right; */
-    /* height: 83%; */
     height: 60%;
     width: auto;
-
-    /* width: 30%; */
-
-    /* margin-right: 1vw; */
     position:fixed;
     bottom:1.8vw;
     right: 0px;
