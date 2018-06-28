@@ -1,57 +1,58 @@
 //To do: fade in images (faces and full images), smooth transition of image appearance, flashing/ color change of HP when low, health bar, single vs multi (keys), image slider, words typed on page
+//when win winnerimage slides to center and back and loser disappears
 
 // Array of objects called characters that holds all characters
 var characters= [
     {
         name: 'The Captain',
-        health: 180,
-        attack: 20,
+        health: 160,
+        attack: 14,
         fullImageUrl: "assets/images/captain.png",
         faceImgUrl: "assets/images/captain-headshot.png",
-        opponentAttackBack: 25
+        opponentAttackBack: 10
     },
     {
         name: 'The Helmswoman',
         health: 120,
-        attack: 8,
+        attack: 6,
         fullImageUrl: "assets/images/helmswoman.png",
         faceImgUrl: "assets/images/helmswoman-headshot.png",
-        opponentAttackBack: 10
+        opponentAttackBack: 30
     },
 
     {
         name: 'The Quartermaster',
         health: 140,
-        attack: 14,
+        attack: 10,
         userFullImageUrl: "assets/images/quartermaster-left.png",
         fullImageUrl: "assets/images/quartermaster.png",
         faceImgUrl: "assets/images/quartermaster-headshot.png",
-        opponentAttackBack: 15
-    },
-
-    {
-        name: 'The First Mate',
-        health: 160,
-        attack: 20,
-        fullImageUrl: "assets/images/firstmate.png",
-        faceImgUrl: "assets/images/firstmate-headshot.png",
         opponentAttackBack: 20
     },
 
     {
+        name: 'The First Mate',
+        health: 150,
+        attack: 8,
+        fullImageUrl: "assets/images/firstmate.png",
+        faceImgUrl: "assets/images/firstmate-headshot.png",
+        opponentAttackBack: 25
+    },
+
+    {
         name: 'The Cook',
-        health: 100,
+        health: 130,
         attack: 8,
         fullImageUrl: "assets/images/cook.png",
         faceImgUrl: "assets/images/cook-headshot.png",
-        opponentAttackBack: 5
+        opponentAttackBack: 20
     },
 ]
 
 
 
 // global variables
-var userChar, opponentChar, user, opponent, userName, opponentName, userHealth, opponentHealth, userAttack, opponentAttackBack;
+var userChar, opponentChar, user, opponent, userName, opponentName, userHealth, opponentHealth, userAttack, opponentAttackBack, originalAttack;
 
 // After user character and opponent character are chosen then all other unchosen characters are hidden
 // function displays the users name and health as well as the opponents name and health 
@@ -85,8 +86,24 @@ function opponentAttack(){
     var attackBack = "<p>" + opponentName + " attacked " + userName +  " dealing back " + opponentAttackBack + " damage </p> </br>" 
     $('#result').prepend(attackBack);
     $('#userHealth').html(userHealth);
-    $('.attack').show();
-    
+
+    // Animate changes the position of the element (adding more space to the right of the element and thereby moving the position of the element to the left)
+    //one way
+    // opponent.animate({right: opponentAttackBack +"%"}, 'slow', 'linear');
+    // opponent.animate({right: opponentAttackBack/2 + "%"}, 'slow', 'linear');
+
+    //another way
+    opponent.animate({right: "+="+opponentAttackBack +"%"}, 'slow', 'linear');
+    opponent.animate({right: opponentAttackBack/2 + "%"}, 'slow', 'linear');
+
+    //another way
+    // opponent.animate({right: "+="+opponentAttackBack}, "slow", "linear");
+
+    // yet another way
+    // opponent.animate({right: "25%"}, "slow", "linear");
+    // opponent.animate({right: "0%"}, "slow", "linear");
+
+   $('.attack').show(); 
 }
 
 
@@ -113,8 +130,9 @@ $(document).ready(function(){
             userName = characters[userChar]["name"];
             userHealth = characters[userChar]["health"];
             userAttack = characters[userChar]["attack"];
+            originalAttack = userAttack;
     
-            user = $('<img>');
+            user = $('<img style="display: none;">');
             user.attr('id' , 'userImage');
 
             if (userName === 'The Quartermaster'){
@@ -123,8 +141,12 @@ $(document).ready(function(){
             else{
                 user.attr('src', characters[userChar]["fullImageUrl"]);
             }
-    
-            $('#userPlayer').append(user);
+            
+            // $('#userPlayer').append(user);
+
+            // slideDown method will display the element with a sliding motion
+            user.appendTo('#userPlayer').slideDown('slow', 'linear');
+            
             
         }
         // chooses opponent character
@@ -134,12 +156,15 @@ $(document).ready(function(){
             opponentHealth = characters[opponentChar]["health"];
             opponentAttackBack = characters[opponentChar]["opponentAttackBack"];
 
-            opponent = $('<img>');
+            opponent = $('<img style="display: none;">');
             opponent.attr('id' , 'opponentImage');
             
             opponent.attr('src', characters[opponentChar]["fullImageUrl"]);
             
-            $('#opponentPlayer').append(opponent);
+            // $('#opponentPlayer').append(opponent);
+
+            // slideDown method will display the element with a sliding motion
+            opponent.appendTo('#opponentPlayer').slideDown('slow', 'linear');
         } 
 
         $(this).hide();
@@ -153,15 +178,31 @@ $(document).ready(function(){
     // after user attacks the opponent the userAttack points increases by the userAttack value
     //jQuery methods used hide, html, setTimeout
     $('.attack').on('click', function(){
-        // debugger;
         $('.attack').hide();
         $('#result').html("");
-        user.css("transform", "translateX(25%)").delay(2000);
+
+        // Animate changes the position of the element (adding more space to the left of the element and thereby moving the position of element to the right)
+        //one way
+        user.animate({left: userAttack +"%"}, 'slow', 'linear');
+        user.animate({left: userAttack/2 + "%"}, 'slow', 'linear');
+
+        //similar way
+        // user.animate({left: userAttack +"%"}, 'slow', 'linear');
+        // user.animate({left:  "0%"}, 'slow', 'linear');
+
+        //another way
+        // user.animate({left: "+="+userAttack}, "slow", "linear");
+
+        // yet another way
+        // user.animate({left: "25%"}, "slow", "linear");
+        // user.animate({left: "0%"}, "slow", "linear");
+
+
+
         opponentHealth = opponentHealth - userAttack;
         $('#result').html("<p>" + userName + " attacked " + opponentName +  " dealing " + userAttack + " damage </p>").show();
         $('#opponentHealth').html(opponentHealth);
-        userAttack += userAttack;
-        user.css("transform", "translateX(-25%)").delay(2000); 
+        userAttack = userAttack + originalAttack;
         setTimeout(opponentAttack, 1000);
     });
 });
